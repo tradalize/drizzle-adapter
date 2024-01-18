@@ -1,0 +1,52 @@
+import {
+  pgTable,
+  serial,
+  doublePrecision,
+  bigint,
+  text,
+  pgEnum,
+  jsonb,
+  integer,
+} from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
+import { Timeframe, TIMEFRAME } from "@tradalize/core";
+
+export const backtests = pgTable("backtests", {
+  id: serial("id").primaryKey(),
+  strategyName: text("strategy_name").notNull(),
+  strategyParams: jsonb("strategy_params"),
+});
+
+const backtestsRelations = relations(backtests, ({ many }) => ({
+  trades: many(trades),
+}));
+
+const timeframes = Object.values(TIMEFRAME) as [Timeframe, ...Timeframe[]];
+
+const timeframeEnum = pgEnum("timeframe", timeframes);
+
+export const trades = pgTable("trades", {
+  id: serial("id").primaryKey().notNull(),
+  symbol: text("symbol").notNull(),
+  timeframe: timeframeEnum("timeframe").notNull(),
+  direction: integer("direction").notNull(),
+  openPrice: doublePrecision("open_price").notNull(),
+  openTime: bigint("open_time", { mode: "number" }).notNull(),
+  closePrice: doublePrecision("close_price"),
+  closeTime: bigint("close_time", { mode: "number" }),
+  backtestId: integer("backtest_id"),
+});
+
+const tradesRelations = relations(trades, ({ one }) => ({
+  backtest: one(backtests, {
+    fields: [trades.backtestId],
+    references: [backtests.id],
+  }),
+}));
+
+export type Backtest = typeof backtests.$inferSelect;
+
+export type Trade = typeof trades.$inferSelect;
+export type InsertTrade = typeof trades.$inferInsert;
+
+export default { backtests, backtestsRelations, trades, tradesRelations };
