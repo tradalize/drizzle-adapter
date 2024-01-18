@@ -1,9 +1,13 @@
 import { eq } from "drizzle-orm";
-import { getDbClient } from "../dbClient.js";
+import { getDbClient } from "../db.js";
 import { backtests } from "../schema.js";
 
-export function deleteBacktests(dbUrl: string, id: number) {
-  const db = getDbClient(dbUrl);
+export async function deleteBacktests(dbUrl: string, id: number) {
+  const { db, endConnection } = getDbClient(dbUrl);
 
-  return db.delete(backtests).where(eq(backtests.id, id));
+  await db.delete(backtests).where(eq(backtests.id, id));
+
+  endConnection();
+
+  return;
 }

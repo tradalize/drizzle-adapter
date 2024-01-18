@@ -23,7 +23,7 @@ const backtestsRelations = relations(backtests, ({ many }) => ({
 
 const timeframes = Object.values(TIMEFRAME) as [Timeframe, ...Timeframe[]];
 
-const timeframeEnum = pgEnum("timeframe", timeframes);
+export const timeframeEnum = pgEnum("timeframe", timeframes);
 
 export const trades = pgTable("trades", {
   id: serial("id").primaryKey().notNull(),
@@ -49,4 +49,10 @@ export type Backtest = typeof backtests.$inferSelect;
 export type Trade = typeof trades.$inferSelect;
 export type InsertTrade = typeof trades.$inferInsert;
 
-export default { backtests, backtestsRelations, trades, tradesRelations };
+export default {
+  backtests,
+  backtestsRelations,
+  timeframeEnum,
+  trades,
+  tradesRelations,
+};

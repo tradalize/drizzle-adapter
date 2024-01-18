@@ -1,7 +1,11 @@
-import { getDbClient } from "../dbClient.js";
+import { getDbClient } from "../db.js";
 
 export function getBacktests(dbUrl: string) {
-  const db = getDbClient(dbUrl);
+  const { db, endConnection } = getDbClient(dbUrl);
 
-  return db.query.backtests.findMany();
+  const backtests = db.query.backtests.findMany();
+
+  endConnection();
+
+  return backtests;
 }
