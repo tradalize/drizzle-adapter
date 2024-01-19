@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Drizzle adapter for Tradelize applicantion",
   "main": "dist/index.js",
-  "types": "dist",
+  "types": "dist/index.d.ts",
   "type": "module",
   "files": [
     "dist"

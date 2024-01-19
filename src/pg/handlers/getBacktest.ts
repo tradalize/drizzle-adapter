@@ -6,14 +6,12 @@ export async function getBacktest(
   dbUrl: string,
   { id, withTrades }: { id: number; withTrades?: true }
 ) {
-  const { db, endConnection } = getDbClient(dbUrl);
+  const { db } = getDbClient(dbUrl);
 
   const backtest = await db.query.backtests.findFirst({
     where: eq(backtests.id, id),
     with: { trades: withTrades },
   });
-
-  endConnection();
 
   return backtest;
 }
