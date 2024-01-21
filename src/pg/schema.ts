@@ -34,7 +34,9 @@ export const trades = pgTable("trades", {
   openTime: bigint("open_time", { mode: "number" }).notNull(),
   closePrice: doublePrecision("close_price"),
   closeTime: bigint("close_time", { mode: "number" }),
-  backtestId: integer("backtest_id"),
+  backtestId: integer("backtest_id")
+    .references(() => backtests.id, { onDelete: "cascade" })
+    .notNull(),
 });
 
 const tradesRelations = relations(trades, ({ one }) => ({
@@ -45,6 +47,7 @@ const tradesRelations = relations(trades, ({ one }) => ({
 }));
 
 export type Backtest = typeof backtests.$inferSelect;
+export type InsertBacktest = typeof backtests.$inferInsert;
 
 export type Trade = typeof trades.$inferSelect;
 export type InsertTrade = typeof trades.$inferInsert;

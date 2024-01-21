@@ -3,8 +3,12 @@ import postgres from "postgres";
 
 import schema from "./schema.js";
 
+let connection: ReturnType<typeof postgres>;
+
 export function getDbClient(dbUrl: string) {
-  const connection = postgres(dbUrl);
+  if (!connection) {
+    connection = postgres(dbUrl);
+  }
 
   const db = drizzle(connection, { schema });
 

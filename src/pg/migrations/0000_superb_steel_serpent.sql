@@ -19,5 +19,11 @@ CREATE TABLE IF NOT EXISTS "trades" (
 	"open_time" bigint NOT NULL,
 	"close_price" double precision,
 	"close_time" bigint,
-	"backtest_id" integer
+	"backtest_id" integer NOT NULL
 );
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "trades" ADD CONSTRAINT "trades_backtest_id_backtests_id_fk" FOREIGN KEY ("backtest_id") REFERENCES "backtests"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;

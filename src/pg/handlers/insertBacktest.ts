@@ -1,10 +1,13 @@
 import { getDbClient } from "../db.js";
-import { InsertTrade, trades } from "../schema.js";
+import { InsertBacktest, backtests } from "../schema.js";
 
-export async function insertBacktest(dbUrl: string, payload: InsertTrade) {
+export async function insertBacktest(dbUrl: string, payload: InsertBacktest) {
   const { db } = getDbClient(dbUrl);
 
-  const insertedTrade = await db.insert(trades).values(payload).returning();
+  const [insertedBacktest] = await db
+    .insert(backtests)
+    .values(payload)
+    .returning();
 
-  return insertedTrade;
+  return insertedBacktest;
 }

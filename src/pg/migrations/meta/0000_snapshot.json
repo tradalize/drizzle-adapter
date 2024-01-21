@@ -1,5 +1,5 @@
 {
-  "id": "0f2bca48-0775-4e10-9031-f01fb88bad47",
+  "id": "f2455262-2309-43b9-a38a-df1a7a348502",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -88,11 +88,25 @@
           "name": "backtest_id",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "trades_backtest_id_backtests_id_fk": {
+          "name": "trades_backtest_id_backtests_id_fk",
+          "tableFrom": "trades",
+          "tableTo": "backtests",
+          "columnsFrom": [
+            "backtest_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
