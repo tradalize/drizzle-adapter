@@ -20,11 +20,9 @@ export class DrizzlePgBroker extends Broker {
    * Handeling open position action
    */
   async openPosition({
-    symbol,
-    timeframe,
     price,
     time,
-    direction,
+    ...rest
   }: OpenPositionPayload): Promise<void> {
     if (this.currentPosition) {
       console.warn(
@@ -36,12 +34,10 @@ export class DrizzlePgBroker extends Broker {
     }
 
     const position = await insertTrade(this.dbUrl, {
-      symbol,
-      timeframe,
       openPrice: price,
       openTime: time ?? Date.now(),
-      direction,
       backtestId: this.backtest.id,
+      ...rest,
     });
 
     this.currentPosition = position as Position;

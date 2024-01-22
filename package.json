@@ -18,7 +18,7 @@
     "lint:ci": "eslint ./src && prettier ./src --check"
   },
   "dependencies": {
-    "@tradalize/core": "^0.1.5",
+    "@tradalize/core": "^0.2.0",
     "drizzle-orm": "^0.29.3",
     "postgres": "^3.4.3"
   },
