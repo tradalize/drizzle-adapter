@@ -1,5 +1,11 @@
 # @tradalize/drizzle-adapter
 
+## 0.2.0
+
+### Minor Changes
+
+- 30bf635: Adding SP/TP to model
+
 ## 0.1.1
 
 ### Patch Changes
