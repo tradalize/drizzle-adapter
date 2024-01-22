@@ -3,7 +3,7 @@ import {
   ClosePositionPayload,
   OpenPositionPayload,
   Position,
-} from "@tradalize/core/dist";
+} from "@tradalize/core";
 import { Backtest } from "../schema.js";
 import { insertTrade } from "../handlers/insertTrade.js";
 import { updateTrade } from "../handlers/updateTrade.js";

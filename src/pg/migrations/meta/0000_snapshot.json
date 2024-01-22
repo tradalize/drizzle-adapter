@@ -97,12 +97,8 @@
           "name": "trades_backtest_id_backtests_id_fk",
           "tableFrom": "trades",
           "tableTo": "backtests",
-          "columnsFrom": [
-            "backtest_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["backtest_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
