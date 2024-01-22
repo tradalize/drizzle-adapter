@@ -1,5 +1,5 @@
 {
-  "id": "f2455262-2309-43b9-a38a-df1a7a348502",
+  "id": "6bf0a26d-d285-4783-bf7a-9544d3cd1c58",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -84,6 +84,18 @@
           "primaryKey": false,
           "notNull": false
         },
+        "stop_loss": {
+          "name": "stop_loss",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "take_profit": {
+          "name": "take_profit",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": false
+        },
         "backtest_id": {
           "name": "backtest_id",
           "type": "integer",
@@ -97,8 +109,12 @@
           "name": "trades_backtest_id_backtests_id_fk",
           "tableFrom": "trades",
           "tableTo": "backtests",
-          "columnsFrom": ["backtest_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "backtest_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }

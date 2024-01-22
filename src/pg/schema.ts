@@ -34,6 +34,8 @@ export const trades = pgTable("trades", {
   openTime: bigint("open_time", { mode: "number" }).notNull(),
   closePrice: doublePrecision("close_price"),
   closeTime: bigint("close_time", { mode: "number" }),
+  sl: doublePrecision("stop_loss"),
+  tp: doublePrecision("take_profit"),
   backtestId: integer("backtest_id")
     .references(() => backtests.id, { onDelete: "cascade" })
     .notNull(),

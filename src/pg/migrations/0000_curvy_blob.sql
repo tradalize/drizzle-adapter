@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS "trades" (
 	"open_time" bigint NOT NULL,
 	"close_price" double precision,
 	"close_time" bigint,
+	"stop_loss" double precision,
+	"take_profit" double precision,
 	"backtest_id" integer NOT NULL
 );
 --> statement-breakpoint
