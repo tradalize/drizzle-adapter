@@ -1,5 +1,11 @@
 # @tradalize/drizzle-adapter
 
+## 0.2.1
+
+### Patch Changes
+
+- 677c2e2: Fixing providing params
+
 ## 0.2.0
 
 ### Minor Changes
