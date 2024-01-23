@@ -1,5 +1,11 @@
 # @tradalize/drizzle-adapter
 
+## 0.2.3
+
+### Patch Changes
+
+- f347885: Rollback
+
 ## 0.2.2
 
 ### Patch Changes
