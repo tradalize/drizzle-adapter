@@ -1,5 +1,11 @@
 # @tradalize/drizzle-adapter
 
+## 0.2.2
+
+### Patch Changes
+
+- 2ccd870: Change package config
+
 ## 0.2.1
 
 ### Patch Changes
