@@ -5,9 +5,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "files": [
-    "dist"
-  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./pg": "./dist/pg/index.js"
+  },
   "scripts": {
     "build": "rimraf dist/* && tsup",
     "test": "vitest",
