@@ -48,7 +48,18 @@ const tradesRelations = relations(trades, ({ one }) => ({
   }),
 }));
 
-export type Backtest = typeof backtests.$inferSelect;
+export type DefaultStrategyParams<T = Record<string, unknown>> = {
+  symbol: string;
+  timeframe: Timeframe;
+  [k: string]: string | number | T;
+};
+
+export type Backtest<StrategyParams = DefaultStrategyParams> = Omit<
+  typeof backtests.$inferSelect,
+  "strategyParams"
+> & {
+  strategyParams: StrategyParams;
+};
 export type InsertBacktest = typeof backtests.$inferInsert;
 
 export type Trade = typeof trades.$inferSelect;
