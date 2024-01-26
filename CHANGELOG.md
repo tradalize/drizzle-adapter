@@ -1,5 +1,12 @@
 # @tradalize/drizzle-adapter
 
+## 0.2.4
+
+### Patch Changes
+
+- 4af94fb: Types adjustments
+- c362f71: Include migrations to bundle
+
 ## 0.2.3
 
 ### Patch Changes
