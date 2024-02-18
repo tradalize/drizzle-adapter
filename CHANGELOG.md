@@ -1,5 +1,11 @@
 # @tradalize/drizzle-adapter
 
+## 0.2.5
+
+### Patch Changes
+
+- ecd7215: Adding trade comment
+
 ## 0.2.4
 
 ### Patch Changes
