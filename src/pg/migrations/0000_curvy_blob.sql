@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS "trades" (
 	"close_time" bigint,
 	"stop_loss" double precision,
 	"take_profit" double precision,
-	"backtest_id" integer NOT NULL
+	"backtest_id" integer NOT NULL,
+	"comment" text
 );
 --> statement-breakpoint
 DO $$ BEGIN

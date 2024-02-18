@@ -39,6 +39,7 @@ export const trades = pgTable("trades", {
   backtestId: integer("backtest_id")
     .references(() => backtests.id, { onDelete: "cascade" })
     .notNull(),
+  comment: text("comment"),
 });
 
 const tradesRelations = relations(trades, ({ one }) => ({
