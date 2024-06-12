@@ -14,7 +14,11 @@ import { Timeframe, TIMEFRAME } from "@tradalize/core";
 export const backtests = pgTable("backtests", {
   id: serial("id").primaryKey(),
   strategyName: text("strategy_name").notNull(),
-  strategyParams: jsonb("strategy_params"),
+  strategyParams: jsonb("strategy_params").$type<{
+    symbol: string;
+    timeframe: Timeframe;
+    [k: string]: unknown;
+  }>(),
 });
 
 const backtestsRelations = relations(backtests, ({ many }) => ({

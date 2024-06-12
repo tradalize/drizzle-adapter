@@ -11,3 +11,8 @@ export async function insertBacktest(dbUrl: string, payload: InsertBacktest) {
 
   return insertedBacktest;
 }
+
+insertBacktest("postgres://postgres:39396552@localhost:5432/postgres", {
+  strategyName: "test",
+  strategyParams: { symbol: "test", timeframe: "1h" },
+});

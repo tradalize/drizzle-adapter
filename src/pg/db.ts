@@ -1,19 +1,24 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
+// import { drizzle } from "drizzle-orm/postgres-js";
+// import postgres from "postgres";
+
+import { drizzle } from "drizzle-orm/node-postgres";
+import pg from "pg";
 
 import schema from "./schema.js";
 
-let connection: ReturnType<typeof postgres>;
+let pool: pg.Pool;
 
 export function getDbClient(dbUrl: string) {
-  if (!connection) {
-    connection = postgres(dbUrl);
+  if (!pool) {
+    pool = new pg.Pool({
+      connectionString: dbUrl,
+    });
   }
 
-  const db = drizzle(connection, { schema });
+  const db = drizzle(pool, { schema });
 
   const endConnection = () => {
-    void connection.end();
+    void pool.end();
   };
 
   return {
