@@ -1,5 +1,11 @@
 # @tradalize/drizzle-adapter
 
+## 0.3.0
+
+### Minor Changes
+
+- a57f2a8: Move from postgres-js to node-postgres
+
 ## 0.2.5
 
 ### Patch Changes
