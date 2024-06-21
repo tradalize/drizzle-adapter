@@ -1,5 +1,11 @@
 # @tradalize/drizzle-adapter
 
+## 0.3.1
+
+### Patch Changes
+
+- 9a0bea5: Update deps
+
 ## 0.3.0
 
 ### Minor Changes
